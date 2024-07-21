@@ -1,0 +1,197 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #a2c2e2, #c2e2f0, #e2f0c2);
+    background-size: 400% 400%;
+    animation: gradientBackground 15s ease infinite;
+    color: #f4f4f4;
+}
+
+@keyframes gradientBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 0.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Ensures logo stays within the header */
+}
+
+.logo {
+    max-width: 100px;
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin: 0 auto; /* Center align the logo */
+    background: none; /* Ensure there's no background */
+    margin-bottom: 0.5rem; /* Adjust this to reduce space below the logo */
+}
+
+.logo-link {
+    display: inline-block;
+}
+
+.logo {
+    cursor: pointer; /* Indicates that the logo is clickable */
+    transition: opacity 0.3s; /* Smooth hover effect */
+}
+
+.logo:hover {
+    opacity: 0.8; /* Slightly fade the logo on hover */
+}
+
+
+h1 {
+    margin: 0; /* Remove default margin */
+    font-size: 2rem; /* Adjust font size as needed */
+    font-weight: bold;
+    color: #fff; /* Ensure the header text is visible */
+}
+
+.auth-nav {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.auth-nav a {
+    color: #fff;
+    margin-left: 1rem;
+    text-decoration: none;
+    font-size: 1.2rem; /* Increase font size */
+    padding: 0.5rem 1rem; /* Increase padding for larger button effect */
+    border: 2px solid #fff;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.auth-nav a:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 120px); /* Adjust for header height */
+    padding: 2rem;
+}
+
+.form-section,
+.result-section {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%;
+    margin-bottom: 2rem; /* Add space between sections */
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    text-align: left;
+    width: 100%;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="file"],
+textarea {
+    width: 100%;
+    max-width: 400px; /* Limit the max width of input fields */
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    padding: 1rem 2rem; /* Increase padding for larger button effect */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.2rem; /* Increase font size */
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 400px; /* Limit the max width of buttons */
+    transition: box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.6);
+}
+
+.separator {
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    margin: 1.5rem 0;
+    position: relative;
+    text-align: center;
+}
+
+.separator span {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 0 1rem;
+    position: relative;
+    top: -0.6rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.social-login-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-login-buttons button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    width: 60px; /* Increase size of social buttons */
+    height: 60px;
+    transition: box-shadow 0.3s ease;
+}
+
+.social-login-buttons button img {
+    width: 100%;
+    height: auto;
+}
+
+.social-login-buttons button.google img,
+.social-login-buttons button.github img {
+    border-radius: 50%;
+}
+
+.social-login-buttons button:hover img {
+    opacity: 0.8;
+}
+
+.social-login-buttons button:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+}
