@@ -1,34 +1,66 @@
-// Example API endpoint, adjust based on your backend
-const API_BASE_URL = 'http://localhost:5000/api';
+// src/api/api.js
+const BASE_URL = 'https://your-api-endpoint.com';
 
-async function uploadResume(file) {
-    const formData = new FormData();
-    formData.append('resume', file);
-
-    const response = await fetch(`${API_BASE_URL}/uploadResume`, {
-        method: 'POST',
-        body: formData,
-    });
-
-    if (!response.ok) {
-        throw new Error('Failed to upload resume');
-    }
-
-    return response.json();
-}
-
-async function submitJobDescription(description) {
-    const response = await fetch(`${API_BASE_URL}/submitJobDescription`, {
-        method: 'POST',
+// Helper function to handle API requests
+const apiRequest = async (endpoint, method = 'GET', data = null) => {
+    const url = `${BASE_URL}${endpoint}`;
+    const options = {
+        method,
         headers: {
             'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ description }),
-    });
+            'Accept': 'application/json'
+        }
+    };
 
-    if (!response.ok) {
-        throw new Error('Failed to submit job description');
+    if (data) {
+        options.body = JSON.stringify(data);
     }
 
-    return response.json();
-}
+    try {
+        const response = await fetch(url, options);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('API Request Failed:', error);
+        throw error;
+    }
+};
+
+// API Call: User Login
+export const loginUser = async (email, password) => {
+    return apiRequest('/login', 'POST', { email, password });
+};
+
+// API Call: User Sign Up
+export const signupUser = async (name, email, password) => {
+    return apiRequest('/signup', 'POST', { name, email, password });
+};
+
+// API Call: Upload Resume
+export const uploadResume = async (resumeFile) => {
+    const formData = new FormData();
+    formData.append('resume', resumeFile);
+
+    const options = {
+        method: 'POST',
+        body: formData
+    };
+
+    try {
+        const response = await fetch(`${BASE_URL}/upload-resume`, options);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Resume Upload Failed:', error);
+        throw error;
+    }
+};
+
+// API Call: Paste Job Description and Get ATS Score
+export const getATSScore = async (jobDescription) => {
+    return apiRequest('/ats-score', 'POST', { jobDescription });
+};
