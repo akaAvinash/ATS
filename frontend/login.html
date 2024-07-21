@@ -28,16 +28,36 @@
                 <button type="submit">Login</button>
             </form>
 
-            <div class="separator"></div>
-
             <div class="social-login-buttons">
-                <button class="google"><img src="assets/google-logo.png" alt="Google Logo"></button>
-                <button class="github"><img src="assets/github-logo.png" alt="GitHub Logo"></button>
+                <button id="google-login">
+                    <img src="assets/google-logo.png" alt="Login with Google">
+                </button>
+                <button id="github-login">
+                    <img src="assets/github-logo.png" alt="Login with GitHub">
+                </button>
             </div>
         </section>
     </main>
 
     <script src="js/api.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const googleLoginButton = document.getElementById('google-login');
+            const githubLoginButton = document.getElementById('github-login');
+
+            if (googleLoginButton) {
+                googleLoginButton.addEventListener('click', () => {
+                    window.location.href = '/auth/google'; // Adjust URL as needed
+                });
+            }
+
+            if (githubLoginButton) {
+                githubLoginButton.addEventListener('click', () => {
+                    window.location.href = '/auth/github'; // Adjust URL as needed
+                });
+            }
+        });
+    </script>
 </body>
 </html>
